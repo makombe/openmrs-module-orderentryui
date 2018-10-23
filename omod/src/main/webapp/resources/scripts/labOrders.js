@@ -84,7 +84,6 @@ controller('LabOrdersCtrl', ['$scope', '$window', '$location', '$timeout', 'Orde
                 $scope.activeTestOrders = _.map(results, function(item) { return new OpenMRS.TestOrderModel(item) });
                 $scope.activeTestOrdersForHvVl = $scope.activeTestOrders;
                 $scope.activeTestOrders = customizeActiveOrdersToDisplaySingHivVl($scope.activeTestOrders);
-                console.log('$scope.activeTestOrders',$scope.activeTestOrders);
                 $scope.activeTestOrders.sort(function(a, b) {
                     var key1 = a.dateActivated;
                     var key2 = b.dateActivated;
@@ -710,8 +709,6 @@ controller('LabOrdersCtrl', ['$scope', '$window', '$location', '$timeout', 'Orde
 
         }
 
-        // functions that affect the shopping cart of orders written but not yet saved
-
         /**
          * Finds the replacement order for a given active order (e.g. the order that will DC or REVISE it)
          */
@@ -738,7 +735,6 @@ controller('LabOrdersCtrl', ['$scope', '$window', '$location', '$timeout', 'Orde
         };
 
         $scope.reviseOrder = function(activeOrder) {
-            $scope.which = 'single';
             $scope.newDraftDrugOrder = activeOrder.createRevisionOrder();
         };
         $scope.voidOrders = '';
